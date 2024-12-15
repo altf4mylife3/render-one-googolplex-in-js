@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render One Googolplex</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            color: #454545;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 900;
+        }
+
+        a {
+            color: #454545;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #googolplex {
+            color: #ffbb00;
+            width: 100%;
+            max-width: 1500px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        a#download {
+            border: none;
+            margin: 20px;
+            border-radius: 4px;
+            background-color: limegreen;
+            color: #fff;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            outline: none;
+            width: 140px;
+            height: 40px;
+            padding: 10px;
+        }
+
+        a#download:hover {
+            text-decoration: underline;
+            font-style: oblique;
+        }
+
+        a#download:active {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Rendering One Googolplex using JavaScript</h1>
+        <h3>Running entirely on VanillaJS, CSS and HTML. Epic!</h3>
+        <p><a href="https://en.wikipedia.org/wiki/Googolplex" target="_blank">A googolplex is the large number 10<sup>googol</sup>, or equivalently, 10<sup>10<sup>100</sup></sup> or 10<sup>10,000,000,000,​000,000,000,​000,000,000,​000,000,000,​000,000,000,​000,000,000,​000,000,000,​000,000,000,​000,000,000,​000,000,000,​000,000,000</sup>. Written out in ordinary decimal notation, it is 1 followed by 10<sup>100</sup> zeroes; that is, a 1 followed by a googol of zeroes. Its prime factorization is 2<sup>googol</sup> × 5<sup>googol</sup>.</a></p>
+        <a id="download" download href="https://files.catbox.moe/0cy8er.txt" target="_blank">Download output</a>
+        <div id="googolplex"></div>
+    </main>
+    <script>
+        function render() {
+            const chunkSize = 100; //digits
+            const totalChunks = 1000;
+            const elmnt = document.getElementById('googolplex');
+
+            elmnt.textContent = '1,'
+
+            for (let i = 0; i < totalChunks; i++) {
+                let chunk = '0'.repeat(chunkSize);
+
+                chunk = chunk.replace(/(\d{3})(?=\d)/g, '$1,'); //commas every 3 letters
+
+                const textNode = document.createTextNode(chunk + '\n');
+                elmnt.appendChild(textNode);
+            }
+        }
+
+        render();
+    </script>
+</body>
+</html>
